@@ -43,9 +43,9 @@
                   <tr v-for="item in items">
                     <td><a href="#">{{ item.id }}</a></td>
                     <td><a href="#">{{ item.medic }}</a></td>
-                    <td><a href="#">{{ item.patient }}</a></td>
+                    <td><a href="#">{{ item.patient.name }}</a></td>
                     <td><a href="#">{{ item.diagnosis }}</a></td>
-                    <td><a href="#">{{ item.print_url }}</a></td>
+                    <td><a v-bind:href="print_url + item.id" target="_blank">Ver PDF</a></td>
                   </tr>
                 </tbody>
 
