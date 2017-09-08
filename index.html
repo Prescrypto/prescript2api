@@ -18,7 +18,7 @@
   </section>
 
 
-  <section id="app-prescription" class="container-fluid padding2em">
+  <section class="container-fluid padding2em">
     <div class="row">
       <article class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <!-- Nav tabs -->
@@ -31,7 +31,23 @@
         <div class="tab-content">
           <!-- Prescriptions -->
           <div role="tabpanel" class="tab-pane active" id="prescriptions">
-            {{hola}}
+            <section >
+              <div class="table-responsive">
+                <table class="table" id="app-prescription">
+                  <tr>
+                    <td>ID</td><td>Medico</td><td>Paciente</td><td>Diagnostico</td><td>Imprimir</td>
+                  </tr>
+                  <tr v-for="item in items">
+                    <td><a href="#">{{ item.id }}</a></td>
+                    <td><a href="#">{{ item.medic }}</a></td>
+                    <td><a href="#">{{ item.patient }}</a></td>
+                    <td><a href="#">{{ item.diagnosis }}</a></td>
+                    <td><a href="#">{{ item.print_url }}</a></td>
+                  </tr>
+
+                </table>
+              </div>
+            </section>
           </div>
           <!-- NewPrescription -->
           <div role="tabpanel" class="tab-pane" id="create-rx">...</div>
@@ -43,26 +59,13 @@
 
 
 
-
-
-
-
-
-
-
   <!-- Detail View -->
 
 
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="/statics/js/vue.js"></script>
-  <script>
-    var app = new Vue({
-      el: '#app-prescription',
-      data: {
-        hola: 'Hello Vue!'
-      }
-    })
-  </script>
+  <script src="/statics/js/packages/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/statics/js/app.js"></script>
 </body>
 </html>
