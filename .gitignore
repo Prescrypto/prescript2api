@@ -1,0 +1,4 @@
+*~
+*.pyc
+temp/
+node_modules/
