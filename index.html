@@ -29,33 +29,72 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
+
           <!-- Prescriptions -->
           <div role="tabpanel" class="tab-pane active" id="prescriptions">
-            <section >
-              <div class="table-responsive">
-                <table class="table table-striped table-hover" id="app-prescription">
-                  <thead>
-                    <tr>
-                      <td>ID</td><td>Medico</td><td>Paciente</td><td>Diagnostico</td><td>Imprimir</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="item in items">
-                      <td><a href="#">{{ item.id }}</a></td>
-                      <td><a href="#">{{ item.medic }}</a></td>
-                      <td><a href="#">{{ item.patient }}</a></td>
-                      <td><a href="#">{{ item.diagnosis }}</a></td>
-                      <td><a href="#">{{ item.print_url }}</a></td>
-                    </tr>
-                  </tbody>
+            <article class="table-responsive">
+              <table class="table table-striped table-hover" id="app-prescription">
+                <thead>
+                  <tr>
+                    <td>ID</td><td>Medico</td><td>Paciente</td><td>Diagnostico</td><td>Imprimir</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in items">
+                    <td><a href="#">{{ item.id }}</a></td>
+                    <td><a href="#">{{ item.medic }}</a></td>
+                    <td><a href="#">{{ item.patient }}</a></td>
+                    <td><a href="#">{{ item.diagnosis }}</a></td>
+                    <td><a href="#">{{ item.print_url }}</a></td>
+                  </tr>
+                </tbody>
 
-                </table>
-              </div>
-            </section>
+              </table>
+            </article>
           </div>
+
           <!-- NewPrescription -->
-          <div role="tabpanel" class="tab-pane" id="create-rx">...</div>
-        </div>
+          <div role="tabpanel" class="tab-pane" id="create-rx">
+            <form class="form-horizontal padding2em">
+              <div class="form-group">
+                <label for="patient_email" class="col-sm-3 control-label">Email/ID del paciente:</label>
+                <div class="col-sm-9">
+                  <input type="email" name="patient_email" class="form-control" id="patient_email" placeholder="patient@email.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="patient_name" class="col-sm-3 control-label">Nombre Paciente:</label>
+                <div class="col-sm-9">
+                  <input type="text" name="patient_name" class="form-control" id="patient_name" placeholder="Nombre del paciente">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="patient_dob" class="col-sm-3 control-label">Fecha/Nacimiento Paciente:</label>
+                <div class="col-sm-9">
+                  <input type="text" name="patient_dob" class="form-control" id="patient_dob" placeholder="12-09-1988">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="diagnosis" class="col-sm-3 control-label">Diagnostico</label>
+                <div class="col-sm-9">
+                  <input type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnostico del paciente">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="extras" class="col-sm-3 control-label">Indicaciones Extras:</label>
+                <div class="col-sm-9">
+                  <input type="text" name="extras" class="form-control" id="extras" placeholder="Indicaciones Extras">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9 padding2em">
+                  <button type="submit" class="btn btn-primary btn-lg">Firmar Receta</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div> <!-- End TabPanel-->
 
       </article>
     </div>
