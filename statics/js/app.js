@@ -1,4 +1,11 @@
 // Main app js
+
+//Main reference to API
+const RX_ENDPOINT = 'https://prescrypto-development.herokuapp.com/api/v1/rx-endpoint/';
+const MEDIC_TOKEN = '4b697691a633a95ae907c4958ccd9e9748a72a56';
+const headers_ = {'Authorization': 'Token ' + MEDIC_TOKEN }
+var rxs = [];
+
 var rxform = new Vue({
   el: '#app-create-rx',
   data: {
@@ -15,31 +22,20 @@ var rxform = new Vue({
 var app = new Vue({
   el: '#app-prescription',
   data: {
-    items : [
-      {
-        id: 1,
-        medic: "Jesus Alvarado Garzon",
-        patient : "Normal Guy",
-        diagnosis: "Diagnostico de prueba",
-        print_url: "print_url"
-
-      },
-      {
-        id: 2,
-        medic: "Cesar Mejia",
-        patient : "Normal Guy",
-        diagnosis: "Retinopatia Diabetica ",
-        print_url: "print_url"
-
-      },
-      {
-        id: 3,
-        medic: "Bernardo Mesa",
-        patient : "Normal Guy",
-        diagnosis: "Ojo irritado",
-        print_url: "print_url"
-
-      }
-    ]
+    items : rxs
   }
 });
+
+axios({
+    method: 'get',
+    url: RX_ENDPOINT,
+    headers: headers_
+  })
+  .then(function (response) {
+    console.log(response);
+    rxs = response.data.results;
+    app.items = rxs;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
