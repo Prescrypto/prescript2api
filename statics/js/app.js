@@ -1,4 +1,17 @@
 // Main app js
+var rxform = new Vue({
+  el: '#app-create-rx',
+  data: {
+    patient_email: 'Email/telefono/ID del Paciente',
+    patient_name: 'Nombre del paciente',
+    patient_dob: '01-09-1988',
+    diagnosis: 'Diagnostico',
+    extras: 'Extras'
+  }
+});
+
+
+
 var app = new Vue({
   el: '#app-prescription',
   data: {
@@ -29,4 +42,4 @@ var app = new Vue({
       }
     ]
   }
-})
+});

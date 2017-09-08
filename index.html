@@ -55,41 +55,46 @@
 
           <!-- NewPrescription -->
           <div role="tabpanel" class="tab-pane" id="create-rx">
-            <form class="form-horizontal padding2em">
+            <form id="app-create-rx" class="form-horizontal padding2em">
               <div class="form-group">
                 <label for="patient_email" class="col-sm-3 control-label">Email/ID del paciente:</label>
                 <div class="col-sm-9">
-                  <input type="email" name="patient_email" class="form-control" id="patient_email" placeholder="patient@email.com">
+                  <input type="text" v-model="patient_email" class="form-control" id="patient_email" placeholder="patient@email.com"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="patient_name" class="col-sm-3 control-label">Nombre Paciente:</label>
                 <div class="col-sm-9">
-                  <input type="text" name="patient_name" class="form-control" id="patient_name" placeholder="Nombre del paciente">
+                  <input type="text" v-model="patient_name" class="form-control" id="patient_name" placeholder="Nombre del paciente"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="patient_dob" class="col-sm-3 control-label">Fecha/Nacimiento Paciente:</label>
                 <div class="col-sm-9">
-                  <input type="text" name="patient_dob" class="form-control" id="patient_dob" placeholder="12-09-1988">
+                  <input type="text" v-model="patient_dob" class="form-control" id="patient_dob" placeholder="12-09-1988"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="diagnosis" class="col-sm-3 control-label">Diagnostico</label>
                 <div class="col-sm-9">
-                  <input type="text" name="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnostico del paciente">
+                  <input type="text" v-model="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnostico del paciente"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="extras" class="col-sm-3 control-label">Indicaciones Extras:</label>
                 <div class="col-sm-9">
-                  <input type="text" name="extras" class="form-control" id="extras" placeholder="Indicaciones Extras">
+                  <input type="text" v-model="extras" class="form-control" id="extras" placeholder="Indicaciones Extras">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9 padding2em">
                   <button type="submit" class="btn btn-primary btn-lg">Firmar Receta</button>
                 </div>
+              </div>
+              <div class="form-group">
+
+                <p><pre>data: {{ $data }}</pre></p>
+
               </div>
             </form>
 
