@@ -4,17 +4,37 @@
 const RX_ENDPOINT = 'https://prescrypto-development.herokuapp.com/api/v1/rx-endpoint/';
 const MEDIC_TOKEN = '4b697691a633a95ae907c4958ccd9e9748a72a56';
 const PRINT_URL = 'https://prescrypto-development.herokuapp.com/new/api_token?token=' + MEDIC_TOKEN + '&redirect_url=/print/';
-const headers_ = {'Authorization': 'Token ' + MEDIC_TOKEN }
+const headers_ = {'Authorization': 'Token ' + MEDIC_TOKEN };
 var rxs = [];
 
 var rxform = new Vue({
   el: '#app-create-rx',
   data: {
-    patient_email: 'Email/telefono/ID del Paciente',
-    patient_name: 'Nombre del paciente',
-    patient_dob: '01-09-1988',
+    patient: {
+      name : "wozowsky",
+      email : "wozowsky1234",
+      date_of_birth: "1988-09-09",
+      external_patient_file: "myidhidden"
+    },
     diagnosis: 'Diagnostico',
     extras: 'Extras'
+  },
+  methods: {
+    sign_and_send : function(event){
+      if (event) event.preventDefault();
+      axios({
+        method: 'post',
+        url: RX_ENDPOINT,
+        data: this.data,
+        headers: headers_
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    }
   }
 });
 
@@ -39,5 +59,3 @@ axios({
   .catch(function (error) {
     console.log(error);
   });
-
-
