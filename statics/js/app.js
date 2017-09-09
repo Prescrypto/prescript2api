@@ -13,26 +13,29 @@ var rxform = new Vue({
     patient: {
       name : "wozowsky",
       email : "wozowsky1234",
-      date_of_birth: "1988-09-09",
-      external_patient_file: "myidhidden"
+      date_of_birth: "1988-09-09"
     },
     diagnosis: 'Diagnostico',
-    extras: 'Extras'
+    extras: 'Extras',
+    medications: [],
+    clinic: null
   },
   methods: {
     sign_and_send : function(event){
-      if (event) event.preventDefault();
+      if (event) event.preventDefault()
+      console.log(this.$data)
       axios({
         method: 'post',
         url: RX_ENDPOINT,
-        data: this.data,
+        data: this.$data,
         headers: headers_
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response)
       })
       .catch(function (error) {
-        console.log(error);
+        console.log(error)
+        console.log(this.$data)
       })
     }
   }
