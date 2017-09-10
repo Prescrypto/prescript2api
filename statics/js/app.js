@@ -6,6 +6,7 @@ const MEDIC_TOKEN = '4b697691a633a95ae907c4958ccd9e9748a72a56';
 const PRINT_URL = 'https://prescrypto-development.herokuapp.com/new/api_token?token=' + MEDIC_TOKEN + '&redirect_url=/print/';
 const headers_ = {'Authorization': 'Token ' + MEDIC_TOKEN };
 var rxs = [];
+var rx_item = {};
 
 var rxform = new Vue({
   el: '#app-create-rx',
@@ -41,11 +42,24 @@ var rxform = new Vue({
   }
 });
 
+var app_rx_detail = new Vue({
+  el: '#rx_modal_detail',
+  data : {
+    rx : rx_item,
+    print_url: PRINT_URL
+  }
+});
+
 var app = new Vue({
   el: '#app-prescription',
   data: {
     items : rxs,
     print_url: PRINT_URL
+  },
+  methods : {
+    rx_detail : function(rx_item){
+      app_rx_detail.rx = rx_item
+    }
   }
 });
 

@@ -41,10 +41,10 @@
                 </thead>
                 <tbody>
                   <tr v-for="item in items">
-                    <td><a href="#">{{ item.id }}</a></td>
-                    <td><a href="#">{{ item.medic }}</a></td>
-                    <td><a href="#">{{ item.patient.name }}</a></td>
-                    <td><a href="#">{{ item.diagnosis }}</a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#rx_modal_detail" v-on:click="rx_detail(item)">{{ item.id }}</a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#rx_modal_detail" v-on:click="rx_detail(item)">{{ item.medic }}</a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#rx_modal_detail" v-on:click="rx_detail(item)">{{ item.patient.name }}</a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#rx_modal_detail" v-on:click="rx_detail(item)">{{ item.diagnosis }}</a></td>
                     <td><a v-bind:href="print_url + item.id" target="_blank">Ver PDF</a></td>
                   </tr>
                 </tbody>
@@ -107,7 +107,30 @@
 
 
 
-  <!-- Detail View -->
+  <!-- Modal Rx-->
+  <div id="rx_modal_detail" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Detalle de la Receta</h3>
+        </div>
+        <div class="modal-body" style="padding-bottom: 2em;">
+          <ul class="">
+            <li><strong>ID:</strong> {{ rx.id }}</li>
+            <li><strong>Medico:</strong> {{ rx.medic }}</li>
+            <li><strong>Paciente:</strong> {{ rx.patient.name }},id/email: {{ rx.patient.email }}</li>
+            <li><strong>Diagnostico:</strong> {{ rx.diagnosis }}</li>
+            <li><strong>Indicaciones Extra:</strong> {{rx.extras}}</li>
+            <li><strong>Medicamentos</strong></li>
+            <li><strong>Signature:</strong> {{ rx.signature }}</li>
+            <li><a v-bind:href="print_url + rx.id" target="_blank">Ver PDF</a></li>
+          </ul>
+
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
