@@ -116,7 +116,7 @@
           <h3 class="modal-title">Detalle de la Receta</h3>
         </div>
         <div class="modal-body" style="padding-bottom: 2em;">
-          <ul class="">
+          <ul v-if="data_loaded" class="list-unstyled">
             <li><strong>ID:</strong> {{ rx.id }}</li>
             <li><strong>Medico:</strong> {{ rx.medic }}</li>
             <li><strong>Paciente:</strong> {{ rx.patient.name }},id/email: {{ rx.patient.email }}</li>

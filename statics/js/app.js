@@ -36,7 +36,6 @@ var rxform = new Vue({
       })
       .catch(function (error) {
         console.log(error)
-        console.log(this.$data)
       })
     }
   }
@@ -46,7 +45,8 @@ var app_rx_detail = new Vue({
   el: '#rx_modal_detail',
   data : {
     rx : rx_item,
-    print_url: PRINT_URL
+    print_url: PRINT_URL,
+    data_loaded: false
   }
 });
 
@@ -58,7 +58,8 @@ var app = new Vue({
   },
   methods : {
     rx_detail : function(rx_item){
-      app_rx_detail.rx = rx_item
+      app_rx_detail.rx = rx_item,
+      app_rx_detail.data_loaded = true
     }
   }
 });
