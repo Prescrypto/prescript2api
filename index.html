@@ -55,60 +55,68 @@
 
           <!-- NewPrescription -->
           <div role="tabpanel" class="tab-pane" id="create-rx">
+
             <form id="app-create-rx" class="form-horizontal padding2em">
               <aside class="hidden">
-                <input type="text" v-model="patient.external_patient_file">
+                <input type="text" v-model="payload.patient.external_patient_file">
               </aside>
               <div class="form-group">
                 <label for="patient_email" class="col-sm-3 control-label">Email/ID del paciente:</label>
                 <div class="col-sm-9">
-                  <input type="text" v-model="patient.email" class="form-control" id="patient_email" placeholder="patient@email.com"required>
+                  <input type="text" v-model="payload.patient.email" class="form-control" id="patient_email" placeholder="patient@email.com"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="patient_name" class="col-sm-3 control-label">Nombre Paciente:</label>
                 <div class="col-sm-9">
-                  <input type="text" v-model="patient.name" class="form-control" id="patient_name" placeholder="Nombre del paciente"required>
+                  <input type="text" v-model="payload.patient.name" class="form-control" id="patient_name" placeholder="Nombre del paciente"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="patient_dob" class="col-sm-3 control-label">Fecha/Nacimiento Paciente:</label>
                 <div class="col-sm-9">
-                  <input type="text" v-model="patient.date_of_birth" class="form-control" id="patient_dob" placeholder="12-09-1988"required>
+                  <input type="text" v-model="payload.patient.date_of_birth" class="form-control" id="patient_dob" placeholder="12-09-1988"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="diagnosis" class="col-sm-3 control-label">Diagnostico</label>
                 <div class="col-sm-9">
-                  <input type="text" v-model="diagnosis" class="form-control" id="diagnosis" placeholder="Diagnostico del paciente"required>
+                  <input type="text" v-model="payload.diagnosis" class="form-control" id="diagnosis" placeholder="Diagnostico del paciente"required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="extras" class="col-sm-3 control-label">Indicaciones Extras:</label>
                 <div class="col-sm-9">
-                  <input type="text" v-model="extras" class="form-control" id="extras" placeholder="Indicaciones Extras">
+                  <input type="text" v-model="payload.extras" class="form-control" id="extras" placeholder="Indicaciones Extras">
                 </div>
               </div>
+              <section id="medications-app">
+                <button class="btn btn-success">+ Med Libre</button>
+                <!-- Medication templating -->
+                <medication></medication>
+
+              </section>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9 padding2em">
                   <button type="submit" v-on:click="sign_and_send($event)" class="btn btn-primary btn-lg">Firmar Receta</button>
+                  <aside>
+                    <p><pre>response: {{ $data.send_message }}</pre></p>
+                  </aside>
+
+
                 </div>
               </div>
               <div class="form-group">
-
-                <p><pre>data: {{ $data }}</pre></p>
-
+                <p><pre>data: {{ $data.payload }}</pre></p>
               </div>
             </form>
 
-          </div>
-        </div> <!-- End TabPanel-->
+          </div><!-- End TabPanel-->
+        </div> <!-- End TabContent-->
 
       </article>
     </div>
   </section>
-
-
 
   <!-- Modal Rx-->
   <div id="rx_modal_detail" class="modal fade" tabindex="-1" role="dialog">
@@ -125,7 +133,7 @@
             <li><strong>Paciente:</strong> {{ rx.patient.name }},id/email: {{ rx.patient.email }}</li>
             <li><strong>Diagnostico:</strong> {{ rx.diagnosis }}</li>
             <li><strong>Indicaciones Extra:</strong> {{rx.extras}}</li>
-            <li><strong>Medicamentos</strong></li>
+            <li><strong>Medicamentos</strong>{{ rx.medications }}</li>
             <li><strong>Signature:</strong> {{ rx.signature }}</li>
             <li><a v-bind:href="print_url + rx.id" target="_blank">Ver PDF</a></li>
           </ul>
